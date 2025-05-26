@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>아주대 주변 식당 룰렛</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>식당 선정 룰렛</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: "Arial", sans-serif;
+        background-color: #f8f9fa;
+      }
+      h1 {
+        text-align: center;
+        font-size: 50px;
+        display: inline-block;
+        margin: 15px;
+      }
+      #buttons {
+        justify-content: center;
+        display: flex;
+      }
+      .dark-mode {
+        background-color: black;
+        color: white;
+      }
+      #main {
+        display: flex;
+      }
+      #toggle-mode {
+        width: 120px;
+        height: 35px;
+        margin: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgb(193, 193, 193);
+        cursor: pointer;
+      }
+      #toggle-mode:hover {
+        background: #f7c3c3;
+      }
+      #toggle-mode:active {
+        background: #f49a9a;
+      }
+      #wheel-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        position: relative;
+      }
+      header {
+        border-bottom: solid;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #wheel {
+        width: 440px;
+        height: 440px;
+        display: block;
+        border-radius: 50%;
+        border: 5px solid #444;
+        transition: transform 3s ease-out;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+      @media (max-width: 440px) {
+        #wheel-container {
+          width: 90vw;
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+        }}
+
+      /* 삼각형 포인터 (당첨을 가리키는 부분) */
+      /* #pointer {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);  
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 25px solid red; 
+            z-index: 10; 
+            pointer-events: none;  
+        } */
+
+      .container {
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
+      .button {
+        padding: 5px 7px;
+        margin: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .button-container {
+        margin: 3px 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 10px;
+      }
+
+      .button-container button,
+      #preset-options {
+        padding: 10px 20px;
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      #preset-options {
+        width: 200px;
+        font-size: 15px;
+        background-color: #f0f0f0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      /* 추가 버튼 */
+      .add-button {
+        background-color: #28a745;
+        color: white;
+      }
+
+      .add-button:hover {
+        background-color: #218838;
+      }
+      .add-button:active {
+        background-color: #1e7e34;
+      }
+      /* 제거 버튼 */
+      .remove-button {
+        background-color: #dc3545;
+        color: white;
+      }
+      .remove-button:hover {
+        background-color: #c82333;
+      }
+      .remove-button:active {
+        background-color: #bd2130;
+      }
+      */프리셋 적용 버튼 */ .preset-button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 12px;
+      }
+      .preset-button:hover {
+        background-color: #0056b3;
+      }
+      .preset-button:active {
+        background-color: #004085;
+      }
+      /* 돌리기 버튼 */
+      #spin-button {
+        padding: 10px 20px;
+        margin: 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        background-color: #ff4d4d;
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      #spin-button:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+      }
+
+      #spin-button:hover:enabled {
+        background-color: #ff1a1a;
+      }
+
+      #result {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #333;
+      }
+
+      /* 중앙 점 스타일 */
+      #center-circle {
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        z-index: 5;
+      }
+      @media (max-width: 800px) { /* 모바일 화면 */
+        h1 {
+        text-align: center;
+        font-size: 45px;
+        display: inline-block;
+        margin: 12px;
+      }
+    }
+
+      @media (max-width: 480px) { /* 모바일 화면 */
+        h1 {
+        text-align: center;
+        font-size: 30px;
+        display: inline-block;
+        margin: 12px;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>GIST 주변 식당 룰렛</h1>
+      <div id="buttons">
+        <button id="toggle-mode">🌙 다크 모드</button>
+        <button id="toggle-mode" onClick="location.href='index.html'">
+          식당 소개
+        </button>
+        <button id="toggle-mode" onclick="resetWheel()">룰렛 초기화</button>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="button-container">
+        <input type="text" id="restaurant-input" placeholder="식당 이름 입력" />
+        <button id="add-remove-button" class="add-button" onclick="handleRestaurant()">추가</button>
+      </div>
+
+      <div class="button-container">
+        <select id="preset-options">
+          <option
+            value='["해이리", "삼복당", "첨단공원국밥", "제줏간","엉터리무한대패", "현옥", "후동이소금구이", "하르방국시","큰집감자탕뼈찜", "우대", "장가계", "보배반점", "연화", "취미정", "소코아", "류카츠", "영도씨", "필링돈까스", "정성카츠", "OBPC", "락앤도우", "아필코"]'
+          >
+            전체
+          </option>
+          <option
+            value='["해이리", "삼복당", "첨단공원국밥", "제줏간","엉터리무한대패", "현옥", "후동이소금구이", "하르방국시","큰집감자탕뼈찜", "우대"]'
+          >
+            한식
+          </option>
+          <option value='["장가계", "보배반점", "연화", "취미정"]'>중식</option>
+          <option
+            value='["소코아", "류카츠", "영도씨", "필링돈까스", "정성카츠"]'
+          >
+            일식
+          </option>
+          <option value='["OBPC", "락앤도우", "아필코"]'>양식</option>
+        </select>
+        <button class="preset-button" onclick="applyPreset()">적용</button>
+      </div>
+    </div>
+
+    <div id="wheel-container">
+      <div id="pointer"></div>
+      <!-- 당첨을 가리키는 삼각형 -->
+      <canvas id="wheel"></canvas>
+      <div id="center-circle"></div>
+      <!-- 중앙 원 -->
+    </div>
+
+    <button id="spin-button" onclick="spinWheel()">돌리기</button>
+    <p id="result"></p>
+
+    <script>
+      document
+      document.addEventListener("DOMContentLoaded", function () {
+          let body = document.body;
+          let button = document.getElementById("toggle-mode");
+          
+          // 저장된 다크 모드 상태 확인
+          let darkMode = localStorage.getItem("darkMode");
+          if (darkMode === "enabled") {
+            body.classList.add("dark-mode");
+            body.style.backgroundColor = "black";
+            body.style.color = "white";
+            button.textContent = "☀️ 라이트 모드";
+          }
+          button.addEventListener("click", function () {
+            if (body.classList.contains("dark-mode")) {
+              body.classList.remove("dark-mode");
+              body.style.backgroundColor = "white";
+              body.style.color = "black";
+              button.textContent = "🌙 다크 모드";
+              localStorage.setItem("darkMode", "disabled"); // 다크 모드 비활성화 저장
+            } 
+            else {
+              body.classList.add("dark-mode");
+              body.style.backgroundColor = "black";
+              body.style.color = "white";
+              button.textContent = "☀️ 라이트 모드";
+              localStorage.setItem("darkMode", "enabled"); // 다크 모드 활성화 저장
+            }
+          });
+        });
+
+      let restaurants = [];
+      const wheelCanvas = document.getElementById("wheel");
+      const ctx = wheelCanvas.getContext("2d");
+      wheelCanvas.width = 440;
+      wheelCanvas.height = 440;
+      let currentRotation = 0;
+      let isSpinning = false; // 회전 중인지 체크
+
+      function drawWheel() {
+        const sliceAngle = (2 * Math.PI) / restaurants.length;
+        ctx.clearRect(0, 0, wheelCanvas.width, wheelCanvas.height);
+
+        restaurants.forEach((restaurant, i) => {
+          const startAngle = i * sliceAngle;
+          const endAngle = (i + 1) * sliceAngle;
+          const colors = [
+            "#f6d097",
+            "#20B2AA",
+            "#d0f367",
+            "#f6895a",
+            "#47f4eb",
+            "#32CD32",
+            "#8bb8f8",
+            "#c66766",
+            "#dd6dc3",
+            "#1c4dc8",
+            "#b2c02e",
+            "#6bcfdb",
+            "#f1f52c",
+          ];
+          ctx.fillStyle = colors[i % colors.length];
+          ctx.beginPath();
+          ctx.moveTo(wheelCanvas.width/2, wheelCanvas.height/2);
+          ctx.arc(wheelCanvas.width/2, wheelCanvas.height/2, wheelCanvas.height/2, startAngle, endAngle);
+          ctx.fill();
+          ctx.stroke();
+          // 식당 개수에 따른 글씨 크기 조정
+          const fontSize = Math.max(7, Math.min(20, 130 / restaurants.length)); 
+          ctx.fillStyle = i % 2 === 0 ? "black" : "white"; // 대비 색상 적용
+          ctx.font = `${fontSize}px Arial`; // 자동 크기 조정
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          // 텍스트 위치 조정
+          const textAngle = startAngle + sliceAngle / 2;
+          const textX = wheelCanvas.width/2 + Math.cos(textAngle) * 160;
+          const textY = wheelCanvas.height/2 + Math.sin(textAngle) * 160;
+          ctx.fillText(restaurant, textX, textY);
+        });
+      }
+
+      function updateButton() {
+        const input = document.getElementById("restaurant-input").value;
+        const button = document.getElementById("add-remove-button");
+        if (restaurants.includes(input)) {
+          button.textContent = "제거";
+          button.classList.remove("add-button");
+          button.classList.add("remove-button");
+        } 
+        else {
+          button.textContent = "추가";
+          button.classList.remove("remove-button");
+          button.classList.add("add-button");
+        }
+      }
+      function handleRestaurant() {
+        const input = document.getElementById("restaurant-input");
+        const value = input.value.trim();
+    
+        if (!value) return; // 입력값이 없으면 종료
+    
+        if (restaurants.includes(value)) {
+          // 입력값이 이미 배열에 있으면 제거
+          restaurants = restaurants.filter((item) => item !== value);
+        } 
+        else {
+          // 없으면 추가
+          restaurants.push(value);
+        }
+        drawWheel(); // 룰렛 다시 그림 
+        input.value = ""; // 입력값 초기화 
+        updateButton(); // 버튼 상태 업데이트
+      }
+      // 입력 필드가 변경될 때 버튼 상태 업데이트
+      document.getElementById("restaurant-input").addEventListener("input", updateButton);
+      function resetWheel() {
+        restaurants = [];
+        drawWheel();
+      }
+
+      function spinWheel() {
+        if (restaurants.length === 0 || isSpinning) return;
+        isSpinning = true;
+        document.getElementById("spin-button").disabled = true;
+
+        const spinCount = Math.floor(Math.random() * 10) + 5;
+        const selectedIdx = Math.floor(Math.random() * restaurants.length);
+        const sliceAngle = (2 * Math.PI) / restaurants.length;
+        const finalAngle = 2 * Math.PI * spinCount + selectedIdx * sliceAngle;
+
+        currentRotation += finalAngle;
+        wheelCanvas.style.transition = "transform 3s ease-out";
+        wheelCanvas.style.transform = `rotate(${currentRotation}rad)`;
+
+        setTimeout(() => {
+          document.getElementById("result").textContent = swal({
+            title: `결과: ${restaurants[selectedIdx]}`,
+          });
+          document.getElementById(
+            "result"
+          ).textContent = `결과: ${restaurants[selectedIdx]}`;
+          isSpinning = false;
+          document.getElementById("spin-button").disabled = false;
+        }, 3000);
+      }
+
+      function applyPreset() {
+        const preset = document.getElementById("preset-options").value;
+        if (preset === "clear") {
+          restaurants = [];
+        } else if (preset) {
+          restaurants = JSON.parse(preset);
+        }
+        drawWheel();
+      }
+    </script>
+  </body>
+</html>
