@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GIST 주변 식당 소개</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        text-align: center;
+        font-size: 50px;
+        display: inline-block;
+        margin: 15px;
+      } /* block level element */
+
+      #container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 45%;
+        border-right: solid 0.5px;
+      }
+      #explain {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
+        width: 45%;
+        padding: 15px;
+      }
+      .category {
+        display: flex;
+        margin: 20px;
+        margin-left: 5px;
+      }
+      .store {
+        padding: 20px;
+        text-align: center;
+      }
+      .stitle {
+        width: 70px;
+        border-right: solid 1px;
+        padding: 10px;
+        padding-bottom: 10px;
+        padding-right: 3px;
+      }
+
+      #main {
+        display: flex;
+      }
+      
+      header {
+        border-bottom: solid;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #buttons {
+        justify-content: center;
+        display: flex;
+      }
+
+      .dark-mode {
+        background-color: black;
+        color: white;
+      }
+
+      #toggle-mode {
+        width: 120px;
+        height: 35px;
+        margin: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgb(193, 193, 193);
+        cursor: pointer;
+      }
+
+      #toggle-mode:hover {
+        background: #f7c3c3;
+      }
+
+      #toggle-mode:active {
+        background: #f49a9a;
+      }
+
+      .sidebar {
+        padding: 5px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        flex-direction: row;
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        max-width: 500px;
+        max-height: 30px;
+        text-align: center;
+        transition: background 0.3s ease-in-out;
+      }
+      .sidebar button {
+        max-width: 120px; /* 버튼 최대 크기 */
+        min-width: 15px; /* 버튼 최소 크기 */
+        padding: 5px 10px;
+        font-size: 0.7rem; /* 기본 글씨 크기 */
+        border-radius: 5px;
+      }
+      @media (max-width: 900px) {
+        h1 {  
+          text-align: center; 
+          font-size: 40px;
+          display: inline-block;   
+          margin: 15px;
+        }
+        .container {
+          flex-direction: column;
+        }
+        .sidebar,
+        .content {
+          width: 100%;
+        }
+        .category { 
+          display: flex;
+          margin: 10px;
+          margin-left: 5px;
+        }
+        .stitle {
+          width: 30px;
+          border-right: solid 1px;
+          padding: 10px;
+          padding-bottom: 45px;
+          padding-top: 45px;
+          margin-left: 1px;
+        }
+      }
+
+      @media (max-width: 768px) { /* 태블릿 및 작은 화면 */
+        h1 {  
+          text-align: center; 
+          font-size: 30px;
+          display: inline-block;   
+          margin: 12px;
+        }
+        .container {
+          flex-direction: column;
+        }
+        .sidebar,
+        .content {
+          width: 100%;
+        }
+        .category { 
+          display: flex;
+          margin: 10px;
+          margin-left: 5px;
+        }
+        .stitle {
+          width: 30px;
+          border-right: solid 1px;
+          padding: 10px;
+          padding-bottom: 50px;
+          padding-top: 50px;
+          margin-left: 1px;
+        }
+
+        .sidebar button {
+          max-width: 25%;
+          max-height: 50px;   
+          gap: 4px;
+          font-size: 0.55rem;
+          padding: 2px 4px;
+        }
+      }
+      
+      @media (max-width: 480px) { /* 모바일 화면 */
+        h1 {
+        text-align: center;
+        font-size: 30px;
+        display: inline-block;
+        margin: 12px;
+      }
+
+        .category { 
+          display: flex;
+          margin: 7px;
+          margin-left: 3px;
+        }
+        .stitle {
+          width: 10px;
+          border-right: solid 1px;
+          padding: 10px;
+          padding-bottom: 60px;
+          padding-top: 60px;
+          margin-left: 1px;
+          font-size: 10px;
+        }
+
+        .sidebar button {
+          max-width: 25%;
+          max-height: 45px;   
+          font-size: 0.15rem;
+          gap: 1px;
+          padding: 1px 2px;
+        }
+      }
+
+      .sidebar :hover {
+        background: #f7c3c3;
+        transition: 0.2s;
+      }
+      .sidebar :active {
+        background: #f49a9a;
+        transition: 0.2s;
+      }
+      .font-regular {
+        font-family: "Gowun Dodum", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      .gothic-regular {
+        font-family: "Gothic A1", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .rating {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        font-size: 30px;
+      }
+      .star {
+        color: gold; /* 가득 찬 별은 금색 */
+        font-size: 30px;
+      }
+
+      .empty-star {
+        color: #ddd; /* 빈 별은 회색 */
+        font-size: 30px;
+      }
+
+      .halfstar {
+        font-size: 30px;
+        display: inline-block;
+        background: linear-gradient(
+          to right,
+          gold 50%,
+          #ddd 50%
+        ); /* 왼쪽 50%는 금색 (gold), 오른쪽 50%는 회색 (#ddd) */
+        -webkit-background-clip: text; /* 텍스트(별 모양) 내부에만 배경 색상을 적용하도록 설정 */
+        -webkit-text-fill-color: transparent; /* 기본 색상을 투명하게 만들어서 linear-gradient로만 색상을 표현 */
+        -moz-background-clip: text; /* 파이어폭스 호환 */
+        -moz-text-fill-color: transparent; /* 파이어폭스 호환 */
+        color: transparent;
+      }
+      .fixed-size-img {
+        width: 95%;  /* 부모 요소 기준 30% 크기 */
+        max-height: 60vh;  /* 뷰포트 높이의 40% */
+        object-fit: cover;  /* 이미지 비율 유지하며 채우기 */
+        aspect-ratio: 16/13; /* 가로:세로 비율 유지 */
+        overflow: hidden;
+      }
+      .icon-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+      .red-box {
+        min-width: 50px;
+        padding: 10px 15px; /* 크기 증가 */
+        margin-bottom: 10px;
+        background-color: rgb(247, 167, 167);
+        border-radius: 15px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center; /* 텍스트 정렬 */
+        font-size: 16px; /* 폰트 크기 증가 */
+        color: white;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>GIST 주변 식당 소개</h1>
+      <div id="buttons">
+        <button id="toggle-mode">🌙 다크 모드</button>
+        <button id="toggle-mode" onClick="location.href='rulet.html'">
+          룰렛 모드
+        </button>
+        <button id="toggle-mode" onclick="resetContent()">초기 화면</button>
+      </div>
+    </header>
+    <div id="main">
+      <div id="container">
+        <div class="category">
+          <div class="stitle"><h2>한식</h2></div>
+          <div class="sidebar">
+            <button onclick="changeContent('content1')">해이리</button>
+            <button onclick="changeContent('content2')">삼복당</button>
+            <button onclick="changeContent('content3')">첨단공원국밥</button>
+            <button onclick="changeContent('content4')">제줏간</button>
+            <button onclick="changeContent('content5')">엉터리무한대패</button>
+            <button onclick="changeContent('content6')">현옥</button>
+            <button onclick="changeContent('content7')">후동이소금구이</button>
+            <button onclick="changeContent('content8')">하르방국시</button>
+            <button onclick="changeContent('content9')">큰집감자탕뼈찜</button>
+            <button onclick="changeContent('content22')">우대</button>
+          </div>
+        </div>
+        <div class="category">
+          <div class="stitle"><h2>중식</h2></div>
+          <div class="sidebar">
+            <button onclick="changeContent('content10')">장가계</button>
+            <button onclick="changeContent('content11')">보배반점</button>
+            <button onclick="changeContent('content12')">연화</button>
+            <button onclick="changeContent('content13')">취미정</button>
+          </div>
+        </div>
+        <div class="category">
+          <div class="stitle"><h2>일식</h2></div>
+          <div class="sidebar">
+            <button onclick="changeContent('content14')">소코아</button>
+            <button onclick="changeContent('content15')">류카츠</button>
+            <button onclick="changeContent('content16')">영도씨</button>
+            <button onclick="changeContent('content17')">필링돈까스</button>
+            <button onclick="changeContent('content18')">정성카츠</button>
+          </div>
+        </div>
+        <div class="category">
+          <div class="stitle"><h2>양식</h2></div>
+          <div class="sidebar">
+            <button onclick="changeContent('content19')">OBPC</button>
+            <button onclick="changeContent('content20')">락앤도우</button>
+            <button onclick="changeContent('content21')">아필코</button>
+          </div>
+        </div>
+      </div>
+      <div class="content" id="explain">
+        <h2 style="text-align: center;">환영합니다!</h2>
+        <p>왼쪽의 식당 이름을 클릭하면 설명이 여기에 표시됩니다.</p>
+        <p>최대한 프랜차이즈 종류의 식당은 포함하지 않았습니다.</p>
+        <p>제작자가 평가하는 태그와 별점이 있습니다.</p>
+        <p>#가까움 태그는 걸어서 30분 이내로 도착할 수 있는 식당입니다.</p>
+        <img src="gist.jpg" width="90%" />
+      </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let body = document.body;
+          let button = document.getElementById("toggle-mode");
+          
+          // 저장된 다크 모드 상태 확인
+          let darkMode = localStorage.getItem("darkMode");
+          if (darkMode === "enabled") {
+            body.classList.add("dark-mode");
+            body.style.backgroundColor = "black";
+            body.style.color = "white";
+            button.textContent = "☀️ 라이트 모드";
+          }
+          button.addEventListener("click", function () {
+            if (body.classList.contains("dark-mode")) {
+              body.classList.remove("dark-mode");
+              body.style.backgroundColor = "white";
+              body.style.color = "black";
+              button.textContent = "🌙 다크 모드";
+              localStorage.setItem("darkMode", "disabled"); // 다크 모드 비활성화 저장
+            } 
+            else {
+              body.classList.add("dark-mode");
+              body.style.backgroundColor = "black";
+              body.style.color = "white";
+              button.textContent = "☀️ 라이트 모드";
+              localStorage.setItem("darkMode", "enabled"); // 다크 모드 활성화 저장
+            }
+          });
+        });
+
+        function changeContent(type) {
+          let info = {
+            content1: {
+              title: "해이리",
+              desc: "해이리는 솥밥집입니다.<br> 해이리의 메뉴는 솥밥이 있고 정식메뉴가 있습니다. 솥밥은 주 재료가 솥밥 안에 들어있고 정식은 기본 솥밥에 따로 나오는 구성입니다. <br> 제작자가 추천하는 것은 간장 생 연어장 솥밥입니다. <br>#밥약 #가까움",
+              img: "section1.png",
+              rating: 5,
+            },
+            content2: {
+              title: "삼복당",
+              desc: "삼복당은 국수집입니다.<br> 닭 한마리 칼국수와 초계막국수등 다양한 국수와 감자전을 판매합니다. 감자전의 크기가 크고 맛있습니다. <br> 제작자가 추천하는 것은 뭘 먹어도 감자전은 꼭 시키는 것입니다. <br>#밥약 #가까움",
+              img: "section2.jpg",
+              rating: 4.5,
+            },
+            content3: {
+              title: "첨단공원국밥",
+              desc: "첨단공원국밥은 국밥집입니다.<br> 모듬국밥, 암뽕국밥 등 다양한 국밥을 판매합니다. <br> 제작자가 추천하는 것은 피순대를 좋아한다면 암뽕국밥, 아니라면 모듬국밥입니다. <br>#해장 #가까움 #가성비",
+              img: "section3.jpg",
+              rating: 4.5,
+            },
+            content4: {
+              title: "제줏간",
+              desc: "제줏간은 고깃집입니다.<br> 제주도 컨셉의 고깃집으로 두툼한 스타일의 돼지고기를 판매합니다. <br> 제작자가 추천하는 것은 고기는 아무거나 시키고 국수를 한 번 시켜보는 것입니다. <br>#회식 #1차 #멈",
+              img: "section4.jpg",
+              rating: 3.5,
+            },
+            content5: {
+              title: "엉터리무한대패",
+              desc: "엉터리무한대패는 고깃집입니다.<br> 1인당 2만원 미만으로 무한리필 고기를 먹을 수 있습니다. 일반 무한 대패가 있고 소고기 대패까지 이용가능한 프리미엄이 있습니다. <br> 제작자가 추천하는 것은 3천원 더 내고라도 프리미엄으로 먹는 것입니다. <br>#가성비 #멈",
+              img: "section5.jpeg",
+              rating: 4,
+            },
+            content6: {
+              title: "현옥",
+              desc: "현옥은 국밥집입니다.<br> 돼지국밥, 소머리국밥, 수육류, 전골류 등 다양한 메뉴를 판매합니다. <br> 제작자가 추천하는 것은 모듬국밥입니다.<br>#해장 #가까움",
+              img: "section6.jpg",
+              rating: 3.5,
+            },
+            content7: {
+              title: "후동이 소금구이",
+              desc: "후동이 소금구이는 고깃집입니다.<br> 소금구이와 생삼겹살의 메인 메뉴와 라면과 같은 식사류를 판매합니다. <br> 제작자가 추천하는 것은 소금 구이입니다. <br>#1차 #가까움",
+              img: "section7.jpeg",
+              rating: 4,
+            },
+            content8: {
+              title: "하르방국시",
+              desc: "하르방국시는 제주고기국수 전문점입니다.<br> 기본 고기 국수와 비빔, 콩 국수와 같은 국수류와 돼지 국밥, 돔베 고기등을 판매합니다. <br> 제작자가 추천하는 것은 기본 고기 국시입니다. <br>#밥약 #가까움 #가성비",
+              img: "section8.jpg",
+              rating: 4.5,
+            },
+            content9: {
+              title: "큰집감자탕뼈찜",
+              desc: "큰집감자탕뼈찜은 감자탕집입니다.<br> 감자탕과 뼈찜, 해장국 등을 판매합니다. <br> 제작자가 추천하는 것은 뼈해장국입니다. <br>#해장 #가까움 #가성비",
+              img: "section9.jpeg",
+              rating: 3.5,
+            },
+            content10: {
+              title: "장가계",
+              desc: "장가계는 양꼬치집입니다.<br> 양꼬치, 양갈비와 같은 구이류와 깐풍기, 향라 새우와 같은 요리류가 있고 새우볶음밥, 마파두부밥등 식사류를 판매합니다. 고량주, 이과두주 등 중국 술들 또한 판매합니다. <br> 제작자가 추천하는 것은 무슨 메뉴를 시키건 술을 시키는 것입니다. <br>#1차 #가까움",
+              img: "section10.jpeg",
+              rating: 4.5,
+            },
+            content11: {
+              title: "보배반점",
+              desc: "보배반점은 중국집입니다.<br> 짜장면, 짬뽕, 불고기 잡채밥과 같은 식사류와 유린기, 깐풍기와 같은 요리류를 판매합니다. 고량주, 이과두주 등 중국 술들 또한 판매합니다. <br> 제작자가 추천하는 것은 짬뽕입니다. <br>#식사 #멈",
+              img: "section11.jpg",
+              rating: 3.5,
+            },
+            content12: {
+              title: "연화",
+              desc: "연화는 중국집입니다.<br> 짜장면, 짬뽕과 같은 식사류와 유린기, 깐풍기와 같은 요리류를 판매합니다. 고량주, 이과두주 등 중국 술들 또한 판매합니다. 이 식당은 양이 많고 세트 메뉴를 시켜도 양이 많습니다. 그러나 좀 많은 위생 이슈가 있습니다. 절대 연화의 구글 지도 리뷰를 별점 낮은 순으로 보지 마... <br> 제작자가 추천하는 것은 찹쌀 탕수육입니다. <br>#가성비 #가까움",
+              img: "section12.jpg",
+              rating: 3,
+            },
+            content13: {
+              title: "취미정",
+              desc: "취미정은 중국집입니다.<br> 짜장면, 짬뽕, 차돌 짬뽕과 같은 식사류와 유린기, 깐풍기와 같은 요리류를 판매합니다. 이 식당은은 음식의 양이 많습니다. <br> 제작자가 추천하는 것은 차돌짬뽕입니다. <br>#가성비 #가까움",
+              img: "section13.jpg",
+              rating: 3,
+            },
+            content14: {
+              title: "소코아",
+              desc: "소코아는 일식집입니다.<br> 다양한 카레 종류와 우동류, 덮밥, 카츠 메뉴를 판매합니다. <br> 제작자가 추천하는 것은 소코아 카레 시그니처 3가지 맛입니다. <br>#밥약 #멈",
+              img: "section14.jpg",
+              rating: 5,
+            },
+            content15: {
+              title: "류카츠",
+              desc: "류카츠는 돈까스집입니다.<br> 로스 카츠, 히레 카츠 등 다양한 카츠 메뉴를 판매합니다. <br> 제작자가 추천하는 것은 모듬 카츠입니다. <br>#밥약 #가까움",
+              img: "section15.jpeg",
+              rating: 4,
+            },
+            content16: {
+              title: "영도씨",
+              desc: "영도씨는 연어집입니다.<br> 연어 1접시, 연어 구이, 연어 초밥과 같은 다양한 연어 메뉴를 판매합니다. <br> 제작자가 추천하는 것은 연어 초밥입니다. <br>#밥약 #가성비 #가까움",
+              img: "section16.jpg",
+              rating: 5,
+            },
+            content17: {
+              title: "필링돈까스",
+              desc: "필링돈까스는 돈까스집입니다.<br> 안심카츠, 샐러드돈까스, 쌈돈까스와 같은 여러 종류의 돈까스와 필라프, 파스타, 리조또 등 다양한 식사류를 판매합니다. <br> 제작자가 추천하는 것은 수제 돈까스입니다. <br>#밥약 #가까움",
+              img: "section17.jpeg",
+              rating: 4.5,
+            },
+            content18: {
+              title: "정성카츠",
+              desc: "정성카츠는 돈까스집입니다.<br> 경양식 왕돈까스 정식, 매운돈까스 정식과 같은 여러 종류의 돈까스 정식과 모밀, 우동과 같은 면 메뉴, 규동 등 다양한 식사류를 판매합니다. <br> 제작자가 추천하는 것은 경양식 왕 돈까스 정식입니다. <br>#밥약 #가까움",
+              img: "section18.jpg",
+              rating: 4,
+            },
+            content19: {
+              title: "OBPC",
+              desc: "OBPC는 피자집입니다.<br> 크림새우 피자, 우삼베이 피자와 같은 여러 종류의 피자와 파스타, 떡볶이등 다양한 사이드 메뉴들을 판매합니다. 또한 다양한 주류를 판매합니다. <br> 제작자가 추천하는 것은 포테로니 피자입니다. <br>#밥약 #멈",
+              img: "section19.jpg",
+              rating: 4,
+            },
+            content20: {
+              title: "락앤도우",
+              desc: "락앤도우는 피자집입니다.<br> 석쇠불고기피자, 하와이안bbq피자와 같은 여러 종류의 피자와 토마토 파스타, 감자 튀김, 치킨 윙봉 등 다양한 사이드 메뉴들을 판매합니다. 또한 다양한 주류, 칵테일, 하이볼들을 판매합니다. <br> 제작자가 추천하는 것은 핫페퍼다발피자입니다. <br>#1차 #멈",
+              img: "section20.jpg",
+              rating: 3.5,
+            },
+            content21: {
+              title: "아필코",
+              desc: "아필코는 브런치 카페입니다.<br> 아보카도 오픈 샌드위치, 크림칠리새우 오픈 샌드위치 등 다양한 샌드위치와 토스트, 파니니 등 다양한 브런치를 판매합니다. 또한 케일청포도 쥬스, 청포도 소다 등 여러 음료를 판매합니다. <br> 제작자가 추천하는 것은 루꼴라 하몽 피자입니다. <br>#브런치 #가까움",
+              img: "section21.jpg",
+              rating: 3.5,
+            },
+            content22: {
+              title: "우대",
+              desc: "우대는 소고기집입니다.<br> 24,900원 or 29,900원으로 소고기를 무한리필 받으며 먹을 수 있습니다. <br> 또한 우대 술밥 된장찌개, 라면과 같은 사이드 메뉴도 판매합니다. <br> 제작자가 추천하는 것은 우대 B세트입니다. <br>#가성비 #멈",
+              img: "section22.png",
+              rating: 4,
+            },
+          };
+          let selected = info[type];
+          // desc에서 '#'이 포함된 단어(해시태그)를 추출
+          let hashtags = selected.desc.match(/#\S+/g);
+          if (!hashtags) {
+            hashtags = [];
+          }
+
+          let cleanDesc = selected.desc.replace(/#\S+/g, "").trim();
+
+          // 해시태그 HTML 요소 생성
+          let hashtagHTML = hashtags.length > 0 
+          ? `<div class="icon-container">${hashtags.map(tag => `<span class="red-box">${tag}</span>`).join('')}</div>`
+          : '';  // 해시태그가 없으면 빈 문자열
+
+          document.getElementById("explain").innerHTML = `
+          <h2 class="gothic-regular" style="text-align: center;"><strong>${selected.title}</strong></h2>
+          <p class="font-regular">${cleanDesc}</p>
+          <div class="icon-container">
+            ${hashtags.map(tag => `<span class="red-box">${tag}</span>`).join('')}
+          </div>
+          <div class="img-wrapper">
+            <img class="fixed-size-img" src="${selected.img}" alt="${selected.title}">
+          </div>
+          <p class="font-regular">평점: ${selected.rating}/5 
+            <div class="rating">
+              ${generateStars(selected.rating)}
+            </div>
+          </p>`;
+        }
+
+        function generateStars(rating) {
+          let fullStars = Math.floor(rating); // 가득 찬 별 개수
+          let halfStar = rating % 1 !== 0;
+          let emptyStars = Math.floor(5 - rating);
+
+          let starsHTML = "";
+          for (let i = 0; i < fullStars; i++) {
+            starsHTML += '<span class="star">★</span>';
+          }
+          if (halfStar) {
+            starsHTML += '<span class="halfstar">★</span>';
+          }
+          for (let i = 0; i < emptyStars; i++) {
+            starsHTML += '<span class="empty-star">★</span>';
+          }
+          return starsHTML;
+        }
+        function resetContent() {
+          document.getElementById("explain").innerHTML = 
+          `<h2 style="text-align: center;">환영합니다!</h2>
+          <p>왼쪽의 식당 이름을 클릭하면 설명이 여기에 표시됩니다.</p>
+          <p>최대한 프랜차이즈 종류의 식당은 포함하지 않았습니다.</p>
+          <p>제작자가 평가하는 태그와 별점이 있습니다.</p>
+          <p>#가까움 태그는 걸어서 30분 이내로 도착할 수 있는 식당입니다.</p>
+          <img src="gist.jpg" width="90%" />`;
+        }
+      </script>
+    </div>
+  </body>
+</html>
