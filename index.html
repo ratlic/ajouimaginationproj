@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>아주대 메l645추</title>
+    <title>아주대 메추리</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,10 +32,9 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        align-items: center;
         height: 100%;
         width: 45%;
-        padding: 20px;
+        padding: 15px;
       }
       .category {
         display: flex;
@@ -304,58 +303,47 @@
     <div id="main">
       <div id="container">
         <div class="category">
-          <div class="stitle"><h2>면요리</h2></div>
+          <div class="stitle"><h2>한식</h2></div>
           <div class="sidebar">
-            <button onclick="changeContent('content30')">함흥냉면 메탄점</button>
-            <button onclick="changeContent('content01')">이모네 칼국수</button>
-            <button onclick="changeContent('content31')">큰집멸치국수</button>
-            <button onclick="changeContent('content16')">키와마루아지</button>
-            <button onclick="changeContent('content33')">도이라멘</button>
-            <button onclick="changeContent('content22')">멘야고코로</button>
-            <button onclick="changeContent('content02')">아주쌀국수</button>
-            <button onclick="changeContent('content11')">츠츠</button>
-            <button onclick="changeContent('content27')">송탄 츠바오</button>
+            <button onclick="changeContent('content1')">해이리</button>
+            <button onclick="changeContent('content2')">삼복당</button>
+            <button onclick="changeContent('content3')">첨단공원국밥</button>
+            <button onclick="changeContent('content4')">제줏간</button>
+            <button onclick="changeContent('content5')">엉터리무한대패</button>
+            <button onclick="changeContent('content6')">현옥</button>
+            <button onclick="changeContent('content7')">후동이소금구이</button>
+            <button onclick="changeContent('content8')">하르방국시</button>
+            <button onclick="changeContent('content9')">큰집감자탕뼈찜</button>
+            <button onclick="changeContent('content22')">우대</button>
           </div>
         </div>
         <div class="category">
-          <div class="stitle"><h2>밥요리</h2></div>
+          <div class="stitle"><h2>중식</h2></div>
           <div class="sidebar">
-            <button onclick="changeContent('content24')">할머니 부대찌개</button>
-            <button onclick="changeContent('content28')">대전순대 24시</button>
-            <button onclick="changeContent('content25')">신의주 찹쌀순대</button>
-            <button onclick="changeContent('content13')">감성 뼈다귀</button>
-            <button onclick="changeContent('content15')">호식당</button>
-            <button onclick="changeContent('content05')">어송스시</button>
+            <button onclick="changeContent('content10')">장가계</button>
+            <button onclick="changeContent('content11')">보배반점</button>
+            <button onclick="changeContent('content12')">연화</button>
+            <button onclick="changeContent('content13')">취미정</button>
           </div>
         </div>
         <div class="category">
-          <div class="stitle"><h2>고기요리</h2></div>
+          <div class="stitle"><h2>일식</h2></div>
           <div class="sidebar">
-            <button onclick="changeContent('content34')">엉클돈가스</button>
-            <button onclick="changeContent('content03')">한조카츠</button>
-            <button onclick="changeContent('content04')">소고</button>
-            <button onclick="changeContent('content32')">고고삼겹</button>
-            <button onclick="changeContent('content14')">아웃닭</button>
-            <button onclick="changeContent('content12')">운로</button>
-            <button onclick="changeContent('content29')">하남돼지집</button>
-            <button onclick="changeContent('content21')">빨간석쇠구이</button>
-            <button onclick="changeContent('content23')">킨킨치킨</button>
-            <button onclick="changeContent('content26')">태영생막창</button>
+            <button onclick="changeContent('content14')">소코아</button>
+            <button onclick="changeContent('content15')">류카츠</button>
+            <button onclick="changeContent('content16')">영도씨</button>
+            <button onclick="changeContent('content17')">필링돈까스</button>
+            <button onclick="changeContent('content18')">정성카츠</button>
           </div>
-          <div class="category">
-          <div class="stitle"><h2>더미요리</h2></div>
+        </div>
+        <div class="category">
+          <div class="stitle"><h2>양식</h2></div>
           <div class="sidebar">
-            <button onclick="changeContent('content34')">엉클돈가스</button>
-            <button onclick="changeContent('content03')">한조카츠</button>
-            <button onclick="changeContent('content04')">소고</button>
-            <button onclick="changeContent('content32')">고고삼겹</button>
-            <button onclick="changeContent('content14')">아웃닭</button>
-            <button onclick="changeContent('content12')">운로</button>
-            <button onclick="changeContent('content29')">하남돼지집</button>
-            <button onclick="changeContent('content21')">빨간석쇠구이</button>
-            <button onclick="changeContent('content23')">킨킨치킨</button>
-            <button onclick="changeContent('content26')">태영생막창</button>
+            <button onclick="changeContent('content19')">OBPC</button>
+            <button onclick="changeContent('content20')">락앤도우</button>
+            <button onclick="changeContent('content21')">아필코</button>
           </div>
+        </div>
       </div>
       <div class="content" id="explain">
         <h2 style="text-align: center;">환영합니다!</h2>
@@ -396,175 +384,139 @@
         });
 
         function changeContent(type) {
-          let info = {            
-           content21: {
-              title: "빨간석쇠구이",  
-              desc: "가성비와 맛을 둘다 챙긴 아주대 삼거리 맛집. 통닭, 닭발, 돼지껍데기, 잔치국수 모두 메인메뉴급으로 맛있다. <br>#통닭맛집 #잔치국수 #돼지껍질 #술집",
-              img: "section21.jpg",
-              rating: 4,
-            },
-
-            content22: {
-              title: "멘야고코로",
-              desc: "일본식 라멘집이다. 느끼하지 않고 담백한 국물이 일품임. 블루리본 서베이에서 블루리본도 받았다. <br>#라멘맛집 #규동맛집",
-              img: "section22.jpg",
-              rating: 4.5,
-            },
-
-
-            content23: {
-              title: "킨킨치킨",
-              desc: "단체로 가기 좋은 치킨집. 치킨도 맛있지만 사이드 메뉴(떡볶이, 어묵탕 등)또한 맛있다.<br>#치킨집 #회식맛집",
-              img: "section23.jpg",
-              rating: 3.5,
-            },
-
-
-            content24: {
-              title: "할머니 부대찌개",
-              desc: "기존의 부대찌개의 편견을 깨는 집. 싱싱한 채소와 햄이 많이 들어갔다. 라면사리가 무한리필이다. <br>#부대찌개 #라면맛집",
-              img: "section24.jpg",
-              rating: 3.5,
-            },
-
-
-            content25: {
-              title: "신의주 찹살순대",
-              desc: "기본이 잘 되어있는 순대국밥집. 자극적이지도 밍밍하지도 않음. <br>#국밥집  #순대국밥",
-              img: "section25.jpg",
-              rating: 4,
-            },
-
-            content26: {
-              title: "태영생막창",
-              desc: "소막창, 돼지곱창, 오겹살 맛집이다. 고기를 많이 시키면 사장님이 껍데기를 서비스로 주시기도 한다. <br>#구이맛집 #석쇠구이",
-              img: "section26.jpg",
-              rating: 4,
-            },
-
-
-            content27: {
-              title: "송탄 츠바오",
-              desc: "면이 맛있는 집. 짜장소스와 짬뽕국물은 특별하진 않지만, 면이 부드럽고 익힘이 적당함.  <br>#짜장맛집 #짬뽕맛집",
-              img: "section27.jpg",
-              rating: 3.5,
-            },
-
-
-
-            content28: {
-              title: "대전순대 24시",
-              desc: "기본적인 순대국밥부터 곱창국밥, 내장탕, 오소리감투 까지 가지각색의 돼지부속을 판다.  잡내가 많이나지 않아 좋다. <br>#돼지국밥맛집 #오소리감투",
-              img: "section28.jpg",
-              rating: 3.5,
-            },
-
-
-
-            content29: {
-              title: "하남돼지집",
-              desc: "돼지고기가 정말 맛있다. 숯으로 초벌한 고기가 나와 훈연향이 좋고, 고기가 익는데 기다리는 시간이 적다. 직원이 친절하고, 단체로 갔을때 사장님이 특별선물을 가끔 주신다. <br>#돼지맛집 #깜짝선물",
-              img: "section29.jpg",
-              rating: 4.5,
-            },
-
-            content30: {
-              title: "함흥냉면 메탄점",
-              desc: "국물이 담백함 면을 주문할때 뽑아 질기지 않고 부드러움. 사이드 메뉴만두도 일품임. <br>#냉면맛집 #만두맛집",
-              img: "section30.jpg",
-              rating: 3,
-            },
-            content11: {
-              title: "츠츠",
-              desc: "양이 진짜 많고 자극적이지 않으면서 깔끔한 맛 <br>#탕수육 #짜장면 #짬뽕",
-              img: "section11.jpg",
+          let info = {
+            content1: {
+              title: "해이리",
+              desc: "해이리는 솥밥집입니다.<br> 해이리의 메뉴는 솥밥이 있고 정식메뉴가 있습니다. 솥밥은 주 재료가 솥밥 안에 들어있고 정식은 기본 솥밥에 따로 나오는 구성입니다. <br> 제작자가 추천하는 것은 간장 생 연어장 솥밥입니다. <br>#밥약 #가까움",
+              img: "section1.png",
               rating: 5,
             },
-            content12: {
-              title: "운로",
-              desc: "분위기 좋고 모든 음식들이 믿고 먹어도 될 정도로 다 맛있음<br>#곱창 #두루치기 #곱도리탕",
-              img: "section12.jpg",
-              rating: 4,
-            }, 
-            content13: {
-              title: "감성 뼈다귀",
-              desc: "매장 깔끔하고 기본에 충실한 맛 <br>#감자탕 #뼈해장국 #뼈찜",
-              img: "section13.jpg",
+            content2: {
+              title: "삼복당",
+              desc: "삼복당은 국수집입니다.<br> 닭 한마리 칼국수와 초계막국수등 다양한 국수와 감자전을 판매합니다. 감자전의 크기가 크고 맛있습니다. <br> 제작자가 추천하는 것은 뭘 먹어도 감자전은 꼭 시키는 것입니다. <br>#밥약 #가까움",
+              img: "section2.jpg",
+              rating: 4.5,
+            },
+            content3: {
+              title: "첨단공원국밥",
+              desc: "첨단공원국밥은 국밥집입니다.<br> 모듬국밥, 암뽕국밥 등 다양한 국밥을 판매합니다. <br> 제작자가 추천하는 것은 피순대를 좋아한다면 암뽕국밥, 아니라면 모듬국밥입니다. <br>#해장 #가까움 #가성비",
+              img: "section3.jpg",
+              rating: 4.5,
+            },
+            content4: {
+              title: "제줏간",
+              desc: "제줏간은 고깃집입니다.<br> 제주도 컨셉의 고깃집으로 두툼한 스타일의 돼지고기를 판매합니다. <br> 제작자가 추천하는 것은 고기는 아무거나 시키고 국수를 한 번 시켜보는 것입니다. <br>#회식 #1차 #멈",
+              img: "section4.jpg",
               rating: 3.5,
             },
-            content14: {
-              title: "아웃닭",
-              desc: "튀김옷이 얇아 바삭하고 맛있음 치킨 시키면 감자튀김도 같이 줘서 좋음 <br>#치킨  #튀김",
-              img: "section14.jpg",
+            content5: {
+              title: "엉터리무한대패",
+              desc: "엉터리무한대패는 고깃집입니다.<br> 1인당 2만원 미만으로 무한리필 고기를 먹을 수 있습니다. 일반 무한 대패가 있고 소고기 대패까지 이용가능한 프리미엄이 있습니다. <br> 제작자가 추천하는 것은 3천원 더 내고라도 프리미엄으로 먹는 것입니다. <br>#가성비 #멈",
+              img: "section5.jpeg",
               rating: 4,
             },
+            content6: {
+              title: "현옥",
+              desc: "현옥은 국밥집입니다.<br> 돼지국밥, 소머리국밥, 수육류, 전골류 등 다양한 메뉴를 판매합니다. <br> 제작자가 추천하는 것은 모듬국밥입니다.<br>#해장 #가까움",
+              img: "section6.jpg",
+              rating: 3.5,
+            },
+            content7: {
+              title: "후동이 소금구이",
+              desc: "후동이 소금구이는 고깃집입니다.<br> 소금구이와 생삼겹살의 메인 메뉴와 라면과 같은 식사류를 판매합니다. <br> 제작자가 추천하는 것은 소금 구이입니다. <br>#1차 #가까움",
+              img: "section7.jpeg",
+              rating: 4,
+            },
+            content8: {
+              title: "하르방국시",
+              desc: "하르방국시는 제주고기국수 전문점입니다.<br> 기본 고기 국수와 비빔, 콩 국수와 같은 국수류와 돼지 국밥, 돔베 고기등을 판매합니다. <br> 제작자가 추천하는 것은 기본 고기 국시입니다. <br>#밥약 #가까움 #가성비",
+              img: "section8.jpg",
+              rating: 4.5,
+            },
+            content9: {
+              title: "큰집감자탕뼈찜",
+              desc: "큰집감자탕뼈찜은 감자탕집입니다.<br> 감자탕과 뼈찜, 해장국 등을 판매합니다. <br> 제작자가 추천하는 것은 뼈해장국입니다. <br>#해장 #가까움 #가성비",
+              img: "section9.jpeg",
+              rating: 3.5,
+            },
+            content10: {
+              title: "장가계",
+              desc: "장가계는 양꼬치집입니다.<br> 양꼬치, 양갈비와 같은 구이류와 깐풍기, 향라 새우와 같은 요리류가 있고 새우볶음밥, 마파두부밥등 식사류를 판매합니다. 고량주, 이과두주 등 중국 술들 또한 판매합니다. <br> 제작자가 추천하는 것은 무슨 메뉴를 시키건 술을 시키는 것입니다. <br>#1차 #가까움",
+              img: "section10.jpeg",
+              rating: 4.5,
+            },
+            content11: {
+              title: "보배반점",
+              desc: "보배반점은 중국집입니다.<br> 짜장면, 짬뽕, 불고기 잡채밥과 같은 식사류와 유린기, 깐풍기와 같은 요리류를 판매합니다. 고량주, 이과두주 등 중국 술들 또한 판매합니다. <br> 제작자가 추천하는 것은 짬뽕입니다. <br>#식사 #멈",
+              img: "section11.jpg",
+              rating: 3.5,
+            },
+            content12: {
+              title: "연화",
+              desc: "연화는 중국집입니다.<br> 짜장면, 짬뽕과 같은 식사류와 유린기, 깐풍기와 같은 요리류를 판매합니다. 고량주, 이과두주 등 중국 술들 또한 판매합니다. 이 식당은 양이 많고 세트 메뉴를 시켜도 양이 많습니다. 그러나 좀 많은 위생 이슈가 있습니다. 절대 연화의 구글 지도 리뷰를 별점 낮은 순으로 보지 마... <br> 제작자가 추천하는 것은 찹쌀 탕수육입니다. <br>#가성비 #가까움",
+              img: "section12.jpg",
+              rating: 3,
+            },
+            content13: {
+              title: "취미정",
+              desc: "취미정은 중국집입니다.<br> 짜장면, 짬뽕, 차돌 짬뽕과 같은 식사류와 유린기, 깐풍기와 같은 요리류를 판매합니다. 이 식당은은 음식의 양이 많습니다. <br> 제작자가 추천하는 것은 차돌짬뽕입니다. <br>#가성비 #가까움",
+              img: "section13.jpg",
+              rating: 3,
+            },
+            content14: {
+              title: "소코아",
+              desc: "소코아는 일식집입니다.<br> 다양한 카레 종류와 우동류, 덮밥, 카츠 메뉴를 판매합니다. <br> 제작자가 추천하는 것은 소코아 카레 시그니처 3가지 맛입니다. <br>#밥약 #멈",
+              img: "section14.jpg",
+              rating: 5,
+            },
             content15: {
-              title: "호식당",
-              desc: "가성비 일식 카레집 <br>#카레 #리필가능",
-              img: "section15.jpg",
+              title: "류카츠",
+              desc: "류카츠는 돈까스집입니다.<br> 로스 카츠, 히레 카츠 등 다양한 카츠 메뉴를 판매합니다. <br> 제작자가 추천하는 것은 모듬 카츠입니다. <br>#밥약 #가까움",
+              img: "section15.jpeg",
               rating: 4,
             },
             content16: {
-              title: "키와마루아지",
-              desc: "우리나라 입맛에 맞게 맞춰진 라멘 <br>#라멘 #덮밥",
+              title: "영도씨",
+              desc: "영도씨는 연어집입니다.<br> 연어 1접시, 연어 구이, 연어 초밥과 같은 다양한 연어 메뉴를 판매합니다. <br> 제작자가 추천하는 것은 연어 초밥입니다. <br>#밥약 #가성비 #가까움",
               img: "section16.jpg",
-              rating: 4.5,
-            },
-            content01: {
-              title: "이모네 칼국수",
-              desc: "김치가 참 맛있다. 면은 짭짤하고 식감도 아주 좋고, 국물은 진하고 깊은 맛이 납니다. <br>#칼국수 #이모네",
-              img: "section01.jpg",
-              rating: 4.5,
-            },
-            content02: {
-              title: "아주쌀국수",
-              desc: "쌀국수 본연의 맛을 잘 살린 정석적인 한 그릇. 특유의 향이 과하지 않아 누구나 부담 없이 즐길 수 있는 쌀국수 전문점. 부드럽고 넉넉하게 들어간 고기와 진하고 깔끔한 국물. <br>#쌀국수 #아주대 #소양지쌀국수",
-              img: "section02.jpg",
-              rating: 4,
-            },
-            content03: {
-              title: "한조카츠",
-              desc: "일식돈까스의 정석. 수제 돈카츠 전문점으로, 겉은 바삭하고 속은 촉촉한 두툼한 돈카츠가 특징이다. 치즈카츠, 카레카츠, 안심/등심카츠 등 다양한 메뉴가 준비되어 있고, 깔끔한 플레이팅과 정갈한 반찬 구성도 만족도를 높여준다. 분위기 좋은 내부와 빠른 서비스, 그리고 혼밥이나 데이트 모두에 어울리는 깔끔한 식당이다. <br>#일식돈카츠 #히레카츠 #돈카츠맛집 #수제돈카츠",
-              img: "section03.jpg",
               rating: 5,
             },
-            content04: {
-              title: "소고",
-              desc: "한조카츠보다는 퍽퍽함. 한조카츠에 비해서 비슷한 가격임에도 우동이나 소바를 함께 내오는 것이 차별점. <br>#일식돈까스 #소바 #우동 #돈까스맛집",
-              img: "section04.jpg",
+            content17: {
+              title: "필링돈까스",
+              desc: "필링돈까스는 돈까스집입니다.<br> 안심카츠, 샐러드돈까스, 쌈돈까스와 같은 여러 종류의 돈까스와 필라프, 파스타, 리조또 등 다양한 식사류를 판매합니다. <br> 제작자가 추천하는 것은 수제 돈까스입니다. <br>#밥약 #가까움",
+              img: "section17.jpeg",
               rating: 4.5,
             },
-            content05: {
-              title: "어송스시",
-              desc: "스시를 주문 즉시 눈 앞에서 만들어주는 초밥집. 최대 6명 입장 가능한 것과 비싼 가격은 단점이지만 그만큼 분위기 좋고 맛있는 것이 장점.  <br>#스시 #제철식재료",
-              img: "section05.jpg",
-              rating: 4.5,
-            },
-            content31: {
-              title: "큰집멸치국수",
-              desc: " 깔끔한 멸치 육수 국수 전문점으로서, 시원하고 깊은 멸치국물이 일품인 곳이다. 담백하고 정갈한 국수 맛 덕분에 속이 부담 없고, 저렴한 가격대에 든든한 한 끼를 즐길 수 있다 혼밥하기에도 좋고, 김치와 함께 먹는 국수 조합이 찰떡인 숨은 로컬 맛집이다. <br>#가성비맛집 #혼밥맛집 #시원한국물",
-              img: "section31.jpg",
-              rating: 4.5,
-            },
-            content32: {
-              title: "고고삼겹",
-              desc: "삼겹살 전문 고깃집으로서, 신선한 고기와 푸짐한 기본찬, 그리고 깔끔한 분위기가 특징이다. 직접 구워 먹는 재미와 가성비 좋은 구성 덕분에 학생들뿐만 아니라 직장인 손님들에게도 인기 있는 맛집이다. 단체 모임이나 회식 장소로도 딱이며, 점심시간엔 혼밥 손님도 부담 없이 들를 수 있는 친근한 분위기를 자랑한다. <br>#가성비맛집 #아주대삼겹살 #아주대고기집 #혼밥가능",
-              img: "section32.jpg",
+            content18: {
+              title: "정성카츠",
+              desc: "정성카츠는 돈까스집입니다.<br> 경양식 왕돈까스 정식, 매운돈까스 정식과 같은 여러 종류의 돈까스 정식과 모밀, 우동과 같은 면 메뉴, 규동 등 다양한 식사류를 판매합니다. <br> 제작자가 추천하는 것은 경양식 왕 돈까스 정식입니다. <br>#밥약 #가까움",
+              img: "section18.jpg",
               rating: 4,
             },
-            content33: {
-              title: "도이라멘",
-              desc: "진한 일본식 라멘을 맛볼 수 있는 정통 라멘 전문점이다. <br>#가성비맛집 #혼밥맛집 #수원라멘 #국물맛집 #일식맛집",
-              img: "section33.jpg",
-              rating: 5,
+            content19: {
+              title: "OBPC",
+              desc: "OBPC는 피자집입니다.<br> 크림새우 피자, 우삼베이 피자와 같은 여러 종류의 피자와 파스타, 떡볶이등 다양한 사이드 메뉴들을 판매합니다. 또한 다양한 주류를 판매합니다. <br> 제작자가 추천하는 것은 포테로니 피자입니다. <br>#밥약 #멈",
+              img: "section19.jpg",
+              rating: 4,
             },
-            content34: {
-              title: "엉클돈까스",
-              desc: "인기 있는 돈까스 전문점으로, 두툼하고 바삭한 수제 돈까스와 든든한 한 끼 구성이 매력적인 곳이다. 치즈돈까스, 매운돈까스, 김치나베 등 다양한 메뉴가 있어 골라 먹는 재미도 있고, 가성비 좋고 양도 푸짐해서 학생들에게 특히 인기 많다. 깔끔한 내부와 빠른 서비스도 만족도를 높여주는 포인트! <br>#아주대맛집 #아주대돈까스 #돈까스맛집 #매운돈까스 ",
-              img: "section34.jpg",
-              rating: 4.5,
+            content20: {
+              title: "락앤도우",
+              desc: "락앤도우는 피자집입니다.<br> 석쇠불고기피자, 하와이안bbq피자와 같은 여러 종류의 피자와 토마토 파스타, 감자 튀김, 치킨 윙봉 등 다양한 사이드 메뉴들을 판매합니다. 또한 다양한 주류, 칵테일, 하이볼들을 판매합니다. <br> 제작자가 추천하는 것은 핫페퍼다발피자입니다. <br>#1차 #멈",
+              img: "section20.jpg",
+              rating: 3.5,
             },
-
+            content21: {
+              title: "아필코",
+              desc: "아필코는 브런치 카페입니다.<br> 아보카도 오픈 샌드위치, 크림칠리새우 오픈 샌드위치 등 다양한 샌드위치와 토스트, 파니니 등 다양한 브런치를 판매합니다. 또한 케일청포도 쥬스, 청포도 소다 등 여러 음료를 판매합니다. <br> 제작자가 추천하는 것은 루꼴라 하몽 피자입니다. <br>#브런치 #가까움",
+              img: "section21.jpg",
+              rating: 3.5,
+            },
+            content22: {
+              title: "우대",
+              desc: "우대는 소고기집입니다.<br> 24,900원 or 29,900원으로 소고기를 무한리필 받으며 먹을 수 있습니다. <br> 또한 우대 술밥 된장찌개, 라면과 같은 사이드 메뉴도 판매합니다. <br> 제작자가 추천하는 것은 우대 B세트입니다. <br>#가성비 #멈",
+              img: "section22.png",
+              rating: 4,
+            },
           };
           let selected = info[type];
           // desc에서 '#'이 포함된 단어(해시태그)를 추출
@@ -615,7 +567,7 @@
         }
         function resetContent() {
           document.getElementById("explain").innerHTML = 
-          `<h2 style="text-align: center;">환영합니다!</h2>
+         `<h2 style="text-align: center;">환영합니다!</h2>
           <p>왼쪽의 식당 이름을 클릭하면 설명이 여기에 표시됩니다.</p>
           <p>프랜차이즈 식당은 포함하지 않았습니다.</p>
           <p>제작자가 평가하는 태그와 별점이 있습니다.</p>
