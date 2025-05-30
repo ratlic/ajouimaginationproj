@@ -331,19 +331,20 @@
         <div class="category">
           <div class="stitle"><h2>일식</h2></div>
           <div class="sidebar">
-            <button onclick="changeContent('content14')">소코아</button>
-            <button onclick="changeContent('content15')">류카츠</button>
-            <button onclick="changeContent('content16')">영도씨</button>
-            <button onclick="changeContent('content17')">필링돈까스</button>
-            <button onclick="changeContent('content18')">정성카츠</button>
+            <button onclick="changeContent('content01')">이모네 칼국수</button>
+            <button onclick="changeContent('content02')">아주쌀국수</button>
+            <button onclick="changeContent('content03')">한조카츠</button>
+            <button onclick="changeContent('content04')">소고</button>
+            <button onclick="changeContent('content05')">어송스시</button>
           </div>
         </div>
         <div class="category">
           <div class="stitle"><h2>양식</h2></div>
           <div class="sidebar">
-            <button onclick="changeContent('content19')">OBPC</button>
-            <button onclick="changeContent('content20')">락앤도우</button>
-            <button onclick="changeContent('content21')">아필코</button>
+            <button onclick="changeContent('content31')">큰집멸치국수</button>
+            <button onclick="changeContent('content32')">고고삼겹</button>
+            <button onclick="changeContent('content33')">도이라멘</button>
+            <button onclick="changeContent('content34')">엉클돈가스</button>
           </div>
         </div>
       </div>
@@ -386,131 +387,7 @@
         });
 
         function changeContent(type) {
-          let info = {
-           /* content1: {
-              title: "해이리",
-              desc: "해이리는 솥밥집입니다.<br> 해이리의 메뉴는 솥밥이 있고 정식메뉴가 있습니다. 솥밥은 주 재료가 솥밥 안에 들어있고 정식은 기본 솥밥에 따로 나오는 구성입니다. <br> 제작자가 추천하는 것은 간장 생 연어장 솥밥입니다. <br>#밥약 #가까움",
-              img: "section1.png",
-              rating: 5,
-            },
-            content2: {
-              title: "삼복당",
-              desc: "삼복당은 국수집입니다.<br> 닭 한마리 칼국수와 초계막국수등 다양한 국수와 감자전을 판매합니다. 감자전의 크기가 크고 맛있습니다. <br> 제작자가 추천하는 것은 뭘 먹어도 감자전은 꼭 시키는 것입니다. <br>#밥약 #가까움",
-              img: "section2.jpg",
-              rating: 4.5,
-            },
-            content3: {
-              title: "첨단공원국밥",
-              desc: "첨단공원국밥은 국밥집입니다.<br> 모듬국밥, 암뽕국밥 등 다양한 국밥을 판매합니다. <br> 제작자가 추천하는 것은 피순대를 좋아한다면 암뽕국밥, 아니라면 모듬국밥입니다. <br>#해장 #가까움 #가성비",
-              img: "section3.jpg",
-              rating: 4.5,
-            },
-            content4: {
-              title: "제줏간",
-              desc: "제줏간은 고깃집입니다.<br> 제주도 컨셉의 고깃집으로 두툼한 스타일의 돼지고기를 판매합니다. <br> 제작자가 추천하는 것은 고기는 아무거나 시키고 국수를 한 번 시켜보는 것입니다. <br>#회식 #1차 #멈",
-              img: "section4.jpg",
-              rating: 3.5,
-            },
-            content5: {
-              title: "엉터리무한대패",
-              desc: "엉터리무한대패는 고깃집입니다.<br> 1인당 2만원 미만으로 무한리필 고기를 먹을 수 있습니다. 일반 무한 대패가 있고 소고기 대패까지 이용가능한 프리미엄이 있습니다. <br> 제작자가 추천하는 것은 3천원 더 내고라도 프리미엄으로 먹는 것입니다. <br>#가성비 #멈",
-              img: "section5.jpeg",
-              rating: 4,
-            },
-            content6: {
-              title: "현옥",
-              desc: "현옥은 국밥집입니다.<br> 돼지국밥, 소머리국밥, 수육류, 전골류 등 다양한 메뉴를 판매합니다. <br> 제작자가 추천하는 것은 모듬국밥입니다.<br>#해장 #가까움",
-              img: "section6.jpg",
-              rating: 3.5,
-            },
-            content7: {
-              title: "후동이 소금구이",
-              desc: "후동이 소금구이는 고깃집입니다.<br> 소금구이와 생삼겹살의 메인 메뉴와 라면과 같은 식사류를 판매합니다. <br> 제작자가 추천하는 것은 소금 구이입니다. <br>#1차 #가까움",
-              img: "section7.jpeg",
-              rating: 4,
-            },
-            content8: {
-              title: "하르방국시",
-              desc: "하르방국시는 제주고기국수 전문점입니다.<br> 기본 고기 국수와 비빔, 콩 국수와 같은 국수류와 돼지 국밥, 돔베 고기등을 판매합니다. <br> 제작자가 추천하는 것은 기본 고기 국시입니다. <br>#밥약 #가까움 #가성비",
-              img: "section8.jpg",
-              rating: 4.5,
-            },
-            content9: {
-              title: "큰집감자탕뼈찜",
-              desc: "큰집감자탕뼈찜은 감자탕집입니다.<br> 감자탕과 뼈찜, 해장국 등을 판매합니다. <br> 제작자가 추천하는 것은 뼈해장국입니다. <br>#해장 #가까움 #가성비",
-              img: "section9.jpeg",
-              rating: 3.5,
-            },
-            content10: {
-              title: "장가계",
-              desc: "장가계는 양꼬치집입니다.<br> 양꼬치, 양갈비와 같은 구이류와 깐풍기, 향라 새우와 같은 요리류가 있고 새우볶음밥, 마파두부밥등 식사류를 판매합니다. 고량주, 이과두주 등 중국 술들 또한 판매합니다. <br> 제작자가 추천하는 것은 무슨 메뉴를 시키건 술을 시키는 것입니다. <br>#1차 #가까움",
-              img: "section10.jpeg",
-              rating: 4.5,
-            },
-            content11: {
-              title: "보배반점",
-              desc: "보배반점은 중국집입니다.<br> 짜장면, 짬뽕, 불고기 잡채밥과 같은 식사류와 유린기, 깐풍기와 같은 요리류를 판매합니다. 고량주, 이과두주 등 중국 술들 또한 판매합니다. <br> 제작자가 추천하는 것은 짬뽕입니다. <br>#식사 #멈",
-              img: "section11.jpg",
-              rating: 3.5,
-            },
-            content12: {
-              title: "연화",
-              desc: "연화는 중국집입니다.<br> 짜장면, 짬뽕과 같은 식사류와 유린기, 깐풍기와 같은 요리류를 판매합니다. 고량주, 이과두주 등 중국 술들 또한 판매합니다. 이 식당은 양이 많고 세트 메뉴를 시켜도 양이 많습니다. 그러나 좀 많은 위생 이슈가 있습니다. 절대 연화의 구글 지도 리뷰를 별점 낮은 순으로 보지 마... <br> 제작자가 추천하는 것은 찹쌀 탕수육입니다. <br>#가성비 #가까움",
-              img: "section12.jpg",
-              rating: 3,
-            },
-            content13: {
-              title: "취미정",
-              desc: "취미정은 중국집입니다.<br> 짜장면, 짬뽕, 차돌 짬뽕과 같은 식사류와 유린기, 깐풍기와 같은 요리류를 판매합니다. 이 식당은은 음식의 양이 많습니다. <br> 제작자가 추천하는 것은 차돌짬뽕입니다. <br>#가성비 #가까움",
-              img: "section13.jpg",
-              rating: 3,
-            },
-            content14: {
-              title: "소코아",
-              desc: "소코아는 일식집입니다.<br> 다양한 카레 종류와 우동류, 덮밥, 카츠 메뉴를 판매합니다. <br> 제작자가 추천하는 것은 소코아 카레 시그니처 3가지 맛입니다. <br>#밥약 #멈",
-              img: "section14.jpg",
-              rating: 5,
-            },
-            content15: {
-              title: "류카츠",
-              desc: "류카츠는 돈까스집입니다.<br> 로스 카츠, 히레 카츠 등 다양한 카츠 메뉴를 판매합니다. <br> 제작자가 추천하는 것은 모듬 카츠입니다. <br>#밥약 #가까움",
-              img: "section15.jpeg",
-              rating: 4,
-            },
-            content16: {
-              title: "영도씨",
-              desc: "영도씨는 연어집입니다.<br> 연어 1접시, 연어 구이, 연어 초밥과 같은 다양한 연어 메뉴를 판매합니다. <br> 제작자가 추천하는 것은 연어 초밥입니다. <br>#밥약 #가성비 #가까움",
-              img: "section16.jpg",
-              rating: 5,
-            },
-            content17: {
-              title: "필링돈까스",
-              desc: "필링돈까스는 돈까스집입니다.<br> 안심카츠, 샐러드돈까스, 쌈돈까스와 같은 여러 종류의 돈까스와 필라프, 파스타, 리조또 등 다양한 식사류를 판매합니다. <br> 제작자가 추천하는 것은 수제 돈까스입니다. <br>#밥약 #가까움",
-              img: "section17.jpeg",
-              rating: 4.5,
-            },
-            content18: {
-              title: "정성카츠",
-              desc: "정성카츠는 돈까스집입니다.<br> 경양식 왕돈까스 정식, 매운돈까스 정식과 같은 여러 종류의 돈까스 정식과 모밀, 우동과 같은 면 메뉴, 규동 등 다양한 식사류를 판매합니다. <br> 제작자가 추천하는 것은 경양식 왕 돈까스 정식입니다. <br>#밥약 #가까움",
-              img: "section18.jpg",
-              rating: 4,
-            },
-            content19: {
-              title: "OBPC",
-              desc: "OBPC는 피자집입니다.<br> 크림새우 피자, 우삼베이 피자와 같은 여러 종류의 피자와 파스타, 떡볶이등 다양한 사이드 메뉴들을 판매합니다. 또한 다양한 주류를 판매합니다. <br> 제작자가 추천하는 것은 포테로니 피자입니다. <br>#밥약 #멈",
-              img: "section19.jpg",
-              rating: 4,
-            },
-            content20: {
-              title: "락앤도우",
-              desc: "락앤도우는 피자집입니다.<br> 석쇠불고기피자, 하와이안bbq피자와 같은 여러 종류의 피자와 토마토 파스타, 감자 튀김, 치킨 윙봉 등 다양한 사이드 메뉴들을 판매합니다. 또한 다양한 주류, 칵테일, 하이볼들을 판매합니다. <br> 제작자가 추천하는 것은 핫페퍼다발피자입니다. <br>#1차 #멈",
-              img: "section20.jpg",
-              rating: 3.5,
-            },*/
-        //여기까지 상윤킴
-
-
-            
+          let info = {            
            content21: {
               title: "빨간석쇠구이",  
               desc: "가성비와 맛을 둘다 챙긴 아주대 삼거리 맛집. 통닭, 닭발, 돼지껍데기, 잔치국수 모두 메인메뉴급으로 맛있다. <br>#통닭맛집 #잔치국수 #돼지껍질 #술집",
@@ -582,7 +459,6 @@
               rating: 4.5,
             },
 
-
             content30: {
               title: "함흥냉면 메탄점",
               desc: "국물이 담백함 면을 주문할때 뽑아 질기지 않고 부드러움. 사이드 메뉴만두도 일품임. <br>#냉면맛집 #만두맛집",
@@ -625,6 +501,61 @@
               img: "section16.jpg",
               rating: 4.5,
             },
+            content01: {
+              title: "이모네 칼국수",
+              desc: "김치가 참 맛있다. 면은 짭짤하고 식감도 아주 좋고, 국물은 진하고 깊은 맛이 납니다. <br>#칼국수 #이모네",
+              img: "section01.jpg",
+              rating: 4.5,
+            },
+            content02: {
+              title: "아주쌀국수",
+              desc: "쌀국수 본연의 맛을 잘 살린 정석적인 한 그릇. 특유의 향이 과하지 않아 누구나 부담 없이 즐길 수 있는 쌀국수 전문점. 부드럽고 넉넉하게 들어간 고기와 진하고 깔끔한 국물. <br>#쌀국수 #아주대 #소양지쌀국수",
+              img: "section02.jpg",
+              rating: 4,
+            },
+            content03: {
+              title: "한조카츠",
+              desc: "일식돈까스의 정석. 수제 돈카츠 전문점으로, 겉은 바삭하고 속은 촉촉한 두툼한 돈카츠가 특징이다. 치즈카츠, 카레카츠, 안심/등심카츠 등 다양한 메뉴가 준비되어 있고, 깔끔한 플레이팅과 정갈한 반찬 구성도 만족도를 높여준다. 분위기 좋은 내부와 빠른 서비스, 그리고 혼밥이나 데이트 모두에 어울리는 깔끔한 식당이다. <br>#일식돈카츠 #히레카츠 #돈카츠맛집 #수제돈카츠",
+              img: "section03.jpg",
+              rating: 5,
+            },
+            content04: {
+              title: "소고",
+              desc: "한조카츠보다는 퍽퍽함. 한조카츠에 비해서 비슷한 가격임에도 우동이나 소바를 함께 내오는 것이 차별점. <br>#일식돈까스 #소바 *우동 #돈까스맛집",
+              img: "section04.jpg",
+              rating: 4.5,
+            },
+            content05: {
+              title: "어송스시",
+              desc: "스시를 주문 즉시 눈 앞에서 만들어주는 초밥집. 최대 6명 입장 가능한 것과 비싼 가격은 단점이지만 그만큼 분위기 좋고 맛있는 것이 장점.  <br>#스시 #제철식재료",
+              img: "section05.jpg",
+              rating: 4.5,
+            },
+            content31: {
+              title: "큰집멸치국수",
+              desc: " 깔끔한 멸치 육수 국수 전문점으로서, 시원하고 깊은 멸치국물이 일품인 곳이다. 담백하고 정갈한 국수 맛 덕분에 속이 부담 없고, 저렴한 가격대에 든든한 한 끼를 즐길 수 있다 혼밥하기에도 좋고, 김치와 함께 먹는 국수 조합이 찰떡인 숨은 로컬 맛집이다 <br>#가성비맛집, #혼밥맛집, #시원한국물",
+              img: "section31.jpg",
+              rating: 4.5,
+            },
+            content32: {
+              title: "고고삼겹",
+              desc: "삼겹살 전문 고깃집으로서, 신선한 고기와 푸짐한 기본찬, 그리고 깔끔한 분위기가 특징이다. 직접 구워 먹는 재미와 가성비 좋은 구성 덕분에 학생들뿐만 아니라 직장인 손님들에게도 인기 있는 맛집이다. 단체 모임이나 회식 장소로도 딱이며, 점심시간엔 혼밥 손님도 부담 없이 들를 수 있는 친근한 분위기를 자랑한다. <br>#가성비 맛집, #아주대삼겹살, #아주대고기집, #혼밥가능",
+              img: "section32.jpg",
+              rating: 4,
+            },
+            content33: {
+              title: "도이라멘",
+              desc: "진한 일본식 라멘을 맛볼 수 있는 정통 라멘 전문점이다. <br>#가성비맛집, #혼밥맛집, #수원라멘, #국물맛집, #일식맛집",
+              img: "section33.jpg",
+              rating: 5,
+            },
+            content34: {
+              title: "엉클돈까스",
+              desc: "인기 있는 돈까스 전문점으로, 두툼하고 바삭한 수제 돈까스와 든든한 한 끼 구성이 매력적인 곳이다. 치즈돈까스, 매운돈까스, 김치나베 등 다양한 메뉴가 있어 골라 먹는 재미도 있고, 가성비 좋고 양도 푸짐해서 학생들에게 특히 인기 많다. 깔끔한 내부와 빠른 서비스도 만족도를 높여주는 포인트! <br>#아주대맛집, #아주대돈까스, #돈까스맛집, #푸짐한맛집, #매운돈까스 ",
+              img: "section34.jpg",
+              rating: 4.5,
+            },
+
           };
           let selected = info[type];
           // desc에서 '#'이 포함된 단어(해시태그)를 추출
